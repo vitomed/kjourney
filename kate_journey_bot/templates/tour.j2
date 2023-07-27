@@ -1,0 +1,11 @@
+{
+    "name": "{{ tour.name }}",
+    "stages": [
+    {% for stage in tour.stages %}
+        {
+            "title": "{{ stage.title }}",
+            "description": "{{ stage.description }}"
+        }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]
+}
