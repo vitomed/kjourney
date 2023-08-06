@@ -1,12 +1,10 @@
-import time
-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
 from telegram.ext import CallbackContext
 from jinja2 import Environment, FileSystemLoader
 
-from kate_journey_bot.config.logger import get_logger
-from kate_journey_bot.tours import TOURS, PAYMENTS
+from bot.config.logger import get_logger
+from bot.tours import TOURS, PAYMENTS
 
 logger = get_logger(__name__)
 

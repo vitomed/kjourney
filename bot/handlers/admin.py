@@ -1,12 +1,13 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackContext
 
-from kate_journey_bot.config.logger import get_logger
-from kate_journey_bot.tours import TOURS, PAYMENTS
+from bot.config.logger import get_logger
+from bot.tours import TOURS, PAYMENTS
 
 ADMIN_IDs = [
     299234787,  # @vitomed
     # 5624161973  # @vmthai_phuket
+    245160141  # @kate_katharsis
 ]
 
 logger = get_logger(__name__)

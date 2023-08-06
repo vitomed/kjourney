@@ -1,5 +1,5 @@
-from kate_journey_bot.tours.first import FIRST_TOUR
-from kate_journey_bot.tours.second import SECOND_TOUR
+from bot.tours.first import FIRST_TOUR
+from bot.tours.second import SECOND_TOUR
 
 TOURS = {
     "1": [f"tour_1/{tour}" for tour in FIRST_TOUR],

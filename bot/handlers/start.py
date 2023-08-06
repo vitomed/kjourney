@@ -1,7 +1,7 @@
 from telegram import InlineKeyboardButton, Update, InlineKeyboardMarkup
 from telegram.ext import CallbackContext
 
-from kate_journey_bot.config.logger import get_logger
+from bot.config.logger import get_logger
 
 logger = get_logger(__name__)
 

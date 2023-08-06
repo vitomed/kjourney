@@ -4,9 +4,9 @@ from telegram.ext import (
     ApplicationBuilder, CallbackQueryHandler
 )
 
-from . import handlers
-from .config.access import TOKEN
-from .config.logger import get_logger
+from bot import handlers
+from bot.config.access import TOKEN
+from bot.config.logger import get_logger
 
 COMMAND_HANDLERS = {
     "start": handlers.start,
