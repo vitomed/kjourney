@@ -32,7 +32,9 @@ async def request_tour(update: Update, context: CallbackContext) -> None:
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     for admin_id in ADMIN_IDs:
-        await context.bot.send_message(chat_id=admin_id, text=f'Пользователь @{username} запрашивает доступ к экскурсии {tour_key}', reply_markup=reply_markup)
+        await context.bot.send_message(chat_id=admin_id,
+                                       text=f'Пользователь @{username} запрашивает доступ к экскурсии {tour_key}',
+                                       reply_markup=reply_markup)
 
 
 async def handle_admin_action(update: Update, context: CallbackContext) -> None:
@@ -41,7 +43,8 @@ async def handle_admin_action(update: Update, context: CallbackContext) -> None:
 
     user_id = int(user_id)
 
-    logger.info(f"администратор выполнил действие action: {action} user_id: {user_id} username: @{username} tour_key: {tour_key}")
+    logger.info(
+        f"администратор выполнил действие action: {action} user_id: {user_id} username: @{username} tour_key: {tour_key}")
 
     if action == "approve":
         if user_id not in PAYMENTS:
@@ -49,10 +52,13 @@ async def handle_admin_action(update: Update, context: CallbackContext) -> None:
             logger.info(f"добавлен новый пользователь user_id {user_id} username @{username} в PAYMENTS.")
         PAYMENTS[user_id].append(tour_key)
         logger.info(f"пользователю user_id {user_id} username @{username} предоставлен доступ до экскурсии {tour_key}.")
-    print(bool(action == 'approve' and tour_key in TOURS and user_id in PAYMENTS and tour_key in PAYMENTS[user_id]))
-    print(action, tour_key, TOURS, user_id, PAYMENTS, tour_key, PAYMENTS[user_id])
+
+    logger.info(action, tour_key, TOURS, user_id, PAYMENTS, tour_key, PAYMENTS[user_id])
     if action == 'approve' and tour_key in TOURS and user_id in PAYMENTS and tour_key in PAYMENTS[user_id]:
-        await context.bot.send_message(chat_id=user_id, text=f'Ваш запрос на экскурсию {tour_key} одобрен. Спасибо за доверие и приятной экскурсии!')
+        await context.bot.send_message(
+            chat_id=user_id,
+            text=f'Ваш запрос на экскурсию {tour_key} одобрен. Спасибо за доверие и приятной экскурсии!'
+        )
 
     elif action == 'deny':
         await context.bot.send_message(chat_id=user_id, text=f'Ваш запрос на экскурсию {tour_key} отклонен.')

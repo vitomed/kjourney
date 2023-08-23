@@ -40,11 +40,15 @@ async def button(update: Update, context: CallbackContext) -> None:
         template = env.get_template(TOURS[tour_key][stage_idx])
         result = template.render()
 
-        # await query.edit_message_text(text=TOURS[tour_id][section_number], reply_markup=reply_markup)
         await context.bot.send_message(
             chat_id=chat_id, text=result, reply_markup=reply_markup, parse_mode=ParseMode.HTML
         )
+
+        # Если это второе сообщение первой экскурсии, отправляем аудио
+        if stage_idx == 1 and tour_key == "1":
+            with open("path_to_your_audio.ogg", 'rb') as audio_file:
+                await context.bot.send_audio(chat_id=chat_id, audio=audio_file)
+
     else:
-        # await query.edit_message_text(text="Спасибо за участие в экскурсии!")
         await context.bot.send_message(chat_id=chat_id, text="Спасибо за участие в экскурсии!")
 

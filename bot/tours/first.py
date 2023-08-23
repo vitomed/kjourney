@@ -3,3 +3,7 @@ FIRST_TOUR = [
     "place_2.html",
     "place_3.html",
 ]
+
+VOICE = [
+    ""
+]
